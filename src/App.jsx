@@ -13,6 +13,7 @@ import Coai from './pages/Coai'
 import SkillFusion from './pages/SkillFusion'
 import Workshops from './pages/Workshops'
 import Camp from './pages/Camp'
+import GrowthConf from './pages/GrowthConf'
 
 function RedirectBook() {
   const { title } = useParams()
@@ -31,6 +32,7 @@ function App() {
       <main className="flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/growth-conference" element={<GrowthConf />} />
           <Route path="/workshops" element={<Workshops />} />
           <Route path="/camp" element={<Camp />} />
           <Route path="/book/:title" element={<RedirectBook />} />
@@ -54,3 +56,4 @@ function App() {
 }
 
 export default App
+

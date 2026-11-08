@@ -61,6 +61,43 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ==================== 成长大会 · 年末特别场 ==================== */}
+      <section className="pb-20 px-4">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.55 }}
+          >
+            <Link to="/growth-conference" className="group block relative overflow-hidden rounded-3xl border border-orange-500/20 bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50 shadow-[0_16px_48px_rgba(249,115,22,.12)] hover:shadow-[0_20px_56px_rgba(249,115,22,.20)] transition-shadow">
+              <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-gradient-to-br from-amber-400/20 to-rose-400/20 blur-3xl pointer-events-none" />
+              <div className="relative px-7 py-10 md:px-12 md:py-12 text-center">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/70 border border-orange-500/25 text-[12px] font-bold text-orange-600 mb-5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse" />
+                  年末特别场 · 拆书帮 2026 广州场成长大会
+                </div>
+                <h2 className="headline text-[30px] md:text-[42px] mb-4">
+                  《把这一年，<span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500">拆了</span>》
+                </h2>
+                <p className="text-[15px] md:text-[17px] text-[#6e6e73] leading-relaxed max-w-2xl mx-auto mb-6">
+                  不用会拆书，会过日子就行——年末了，回来把这一年拆开看看。<br className="hidden md:block" />
+                  12 月 20 日，距 2027 只剩 11 天：不是年会，是一年的收成到了可以清点的时候。
+                </p>
+                <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[13.5px] font-semibold text-[#3a3a3c] mb-7">
+                  <span>📅 12月19日 回家夜 · 12月20日 正式大会</span>
+                  <span>📍 广州 · 地铁沿线</span>
+                  <span>🎟 到场限 50 人</span>
+                </div>
+                <span className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 text-white text-[15px] font-bold shadow-[0_8px_24px_rgba(249,115,22,.35)] group-hover:scale-[1.03] transition-transform">
+                  查看大会详情与议程 →
+                </span>
+              </div>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ==================== 学习者痛点 ==================== */}
       <section className="py-20 px-4 bg-white border-y border-black/[.05]">
         <div className="max-w-5xl mx-auto">
@@ -278,3 +315,4 @@ export default function Home() {
     </div>
   )
 }
+

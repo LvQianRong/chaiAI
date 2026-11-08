@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { nextOpen } from '../data/workshops'
 
 const navLinks = [
+  { path: '/growth-conference', label: '成长大会', hot: true },
   { path: '/learning-path', label: '拆成长' },
   { path: '/hot', label: '拆经典' },
   { path: '/chailive/', label: '拆指南', external: true },
@@ -44,6 +45,18 @@ export default function Navbar() {
             >
               {link.label}
             </a>
+          ) : link.hot ? (
+            <Link
+              key={link.path}
+              to={link.path}
+              className={`px-3.5 py-1.5 rounded-full text-[13.5px] font-bold transition-all duration-200 ${
+                location.pathname === link.path
+                  ? 'bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 text-white shadow-[0_4px_14px_rgba(249,115,22,.35)]'
+                  : 'text-orange-600 bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-rose-500/10 hover:from-amber-500/20 hover:to-rose-500/20'
+              }`}
+            >
+              {link.label}
+            </Link>
           ) : (
             <Link
               key={link.path}
@@ -118,3 +131,4 @@ export default function Navbar() {
     </nav>
   )
 }
+

@@ -1,0 +1,274 @@
+import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
+
+// 拆书帮 2026 广州场 · 成长大会《把这一年，拆了》
+// 配色：墨黑 + 暖橙 + 一点木棉红（避免大红大金年会感；不点燃，接住）
+const CONF_DATE = new Date('2026-12-19T00:00:00+08:00')
+
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 14 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.45, delay },
+})
+
+const facts = [
+  { k: '时间', v: '2026年12月19日（周六·回家夜）\n12月20日（周日·正式大会 9:00-17:00）' },
+  { k: '地点', v: '广州 · 地铁沿线（海珠 / 天河优先）' },
+  { k: '规模', v: '到场 50 人 · 报名限 65 人' },
+  { k: '形式', v: '体验式大会：70% 参与 + 30% 讲授' },
+]
+
+const audiences = [
+  { t: '老伙伴', d: '这一年还在场的你，值得被看见。' },
+  { t: '从没参加过的新人', d: '不需要先懂拆书帮——只要"这一年过得不太明白"就够了。' },
+  { t: '离开过的回归者', d: '你需要的只是一个不尴尬的理由。年末，恰好是最容易给理由的时候。' },
+  { t: '外地专程者', d: '一落地就有归属：回家夜先接上你。' },
+]
+
+const storyline = [
+  { n: '①', t: '体验', q: '拆书到底是什么感觉', a: '开场 18 分钟全员拆书' },
+  { n: '②', t: '认知', q: '我为什么要留在这个组织', a: '三个故事 + 回归者讲述' },
+  { n: '③', t: '示范', q: '高手高在哪', a: '成长地图 + 主题分享' },
+  { n: '④', t: '盘点', q: '这一年我攒下了什么', a: '还没熟的果子 + 年度盘点工作坊' },
+  { n: '⑤', t: '承诺', q: '明年我要做什么', a: '跨年契约 + 明年见' },
+]
+
+const nightAgenda = [
+  ['15:00-18:00', '报到接待', '发「广州生存包」，领胸卡与「同频卡」'],
+  ['18:30-18:50', '回家签到', '在「回家墙」上找到自己第一次参加拆书帮活动的照片，贴一颗星'],
+  ['18:50-19:10', '一人一物', '带一件代表「今年成长」的小物，30 秒讲给陌生人'],
+  ['19:10-19:55', '闪电演讲', '6 人 × 5 分钟「我今年拆掉的一个旧我」（新人、回归者优先）'],
+  ['19:55-20:40', '分舵结对圆桌', '外地 × 本地 1:1 结对，聊「你明天最想解决的一个问题」'],
+  ['20:40-20:55', '明日剧透', '讲清明天有哪三个「绝对不能错过的瞬间」'],
+  ['20:55-21:00', '早睡约定', '合影 + 明日集合确认'],
+]
+
+const mainAgenda = [
+  ['08:30-09:00', '能量签到', '写能量值（1-10）贴墙；抽同频卡；投「还没熟的果子」；贴回家墙'],
+  ['09:00-09:10', '开场：你走过来了', '不说宏大叙事，先说「这一年你走完了，先给自己一点掌声」'],
+  ['09:10-09:28', '【体验】全员现场拆书', '三级拆书家带全场做一次完整 RIA，新人当场就会'],
+  ['09:28-09:50', '【认知】拆书帮是什么 + 回归者讲述', '3 个普通人故事（各 5′）+ 1 位「离开又回来」的伙伴（7′）'],
+  ['09:50-10:35', '【示范】从 1-1 到 3-3：成长地图', '过级手册、技能卡、真实过级录像片段'],
+  ['10:35-10:55', '茶歇 + 分舵市集 + 师徒结对墙', '集章换徽章；卡在某级的人现场挂牌找师父'],
+  ['10:55-11:40', '【分享】拆书 × 真实人生', '外地嘉宾：只讲案例，不讲理念'],
+  ['11:40-12:05', '【盘点】还没熟的果子', '从签到箱抽 3-5 件「还在长的事」，一起拆出条能结果的路'],
+  ['12:05-13:20', '午餐 + 自由连接', '发「拼桌地图」按兴趣分组；本地伙伴带外地吃广州味道'],
+  ['13:20-13:50', '能量唤醒', '身体动起来 + 上午「我看见了…」反馈 + 充电站开放说明'],
+  ['13:50-15:10', '【平行工作坊 3 选 1】', '①年度盘点：把 2026 拆成礼物 ②拆书实战：一段文字到一场课 ③拆书 × 副业/个人品牌'],
+  ['15:10-15:25', '茶歇', '—'],
+  ['15:25-16:15', '开放空间/世界咖啡 · 共创', '4 个议题，产出建议并现场认领负责人'],
+  ['16:15-16:45', '颁奖：表彰坚持与回归', '年度坚持奖 / 年度回归奖 / 年度托举奖 / 幕后奖 / 最长路途 / 最佳新人'],
+  ['16:45-17:00', '跨年契约 + 明年见', '写「2027 第一件事」投时间胶囊；把徽章别给身边一个人'],
+]
+
+const memories = [
+  '开场 12 分钟就被拆了一次——不是听人讲拆书，是自己拆了一次',
+  '有人当众说「我离开过，我又回来了」——全场唯一能同时打动老人、新人、流失者的环节',
+  '还没熟的果子——你还在长的那件事，被全场一起想办法',
+  '颁奖词是别人观察到的你——不是「恭喜获奖」，而是「我注意到你今天…」',
+  '徽章不是发的，是别给别人的——收尾的能量传递',
+  '广州的胃——19 日夜宵地图 + 20 日午餐的本地味道',
+]
+
+const topics = [
+  '如何让大湾区拆书帮更有能量',
+  '新人如何在 30 天内启动第一次过级',
+  '如何让离开的人愿意回来',
+  '拆书帮能为职场人 / 家长解决什么真问题',
+]
+
+export default function GrowthConf() {
+  const days = Math.max(0, Math.ceil((CONF_DATE.getTime() - Date.now()) / 86400000))
+
+  return (
+    <div className="hero-wash">
+      {/* ==================== Hero ==================== */}
+      <section className="pt-36 pb-16 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <div className="eyebrow mb-4">拆书帮 2026 广州场 · 成长大会</div>
+            <h1 className="headline text-[40px] md:text-[58px] mb-5">
+              《把这一年，<span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500">拆了</span>》
+            </h1>
+            <p className="text-[17px] md:text-[19px] leading-relaxed text-[#6e6e73] max-w-2xl mx-auto mb-4">
+              不用会拆书，会过日子就行——年末了，回来把这一年拆开看看。
+            </p>
+            <p className="text-[14px] text-[#86868b] mb-8">
+              12 月 20 日，距 2027 只剩 11 天。这不是年会，是一年的收成到了可以清点的时候。
+            </p>
+            <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-rose-500/10 border border-orange-500/20 mb-9">
+              <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
+              <span className="text-[14px] font-bold text-orange-600">
+                {days > 0 ? `距大会还有 ${days} 天` : '大会进行中'}
+              </span>
+              <span className="text-[13px] text-[#86868b]">12 月 19-20 日 · 广州</span>
+            </div>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <a href="#agenda" className="btn-primary !bg-gradient-to-r !from-amber-500 !via-orange-500 !to-rose-500 !shadow-[0_8px_24px_rgba(249,115,22,.35)]">
+                看完整议程 ↓
+              </a>
+              <Link to="/" className="btn-secondary">返回主页</Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ==================== 关键信息 ==================== */}
+      <section className="pb-20 px-4">
+        <div className="max-w-4xl mx-auto grid sm:grid-cols-2 gap-4">
+          {facts.map((f, i) => (
+            <motion.div key={f.k} {...fadeUp(i * 0.06)} className="apple-card p-6">
+              <div className="text-[12px] font-semibold text-orange-600 mb-2 tracking-wide">{f.k}</div>
+              <div className="text-[15px] leading-relaxed text-[#1d1d1f] font-medium whitespace-pre-line">{f.v}</div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* ==================== 为什么叫「拆」 ==================== */}
+      <section className="py-20 px-4 bg-white border-y border-black/[.05]">
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="eyebrow mb-3">主题由来</div>
+          <h2 className="headline text-[28px] md:text-[36px] mb-6">这个「拆」，是拆礼物的拆</h2>
+          <p className="text-[15px] md:text-[16px] leading-[1.9] text-[#6e6e73] text-left md:text-center">
+            一个「拆」字，同时接住两件事：<b className="text-[#1d1d1f]">拆书</b>（方法论）和<b className="text-[#1d1d1f]">拆解这一年</b>（年末场景）。
+            这不是生硬嫁接，而是天然重合——拆书法的本质就是「把经验拆开、找到假设、换一个新行动」，而年末正是所有人都在做这件事的时候。
+          </p>
+          <p className="mt-5 text-[15px] md:text-[16px] leading-[1.9] text-[#6e6e73] text-left md:text-center">
+            年末不是「熬到头了」，是<b className="text-[#1d1d1f]">一年的收成到了可以清点的时候</b>。
+            所以大会的底色是丰盛的：不是来看你还差什么，是来看你这一年攒下了什么。
+            我们共振的是丰盛，不是匮乏；年末的人不需要被点燃，需要被接住。
+          </p>
+        </div>
+      </section>
+
+      {/* ==================== 四类人群 ==================== */}
+      <section className="py-20 px-4">
+        <div className="max-w-5xl mx-auto">
+          <div className="eyebrow mb-3 text-center">为谁来</div>
+          <h2 className="headline text-[28px] md:text-[36px] text-center mb-12">四种人，总有一种是你</h2>
+          <div className="grid md:grid-cols-2 gap-4">
+            {audiences.map((a, i) => (
+              <motion.div key={a.t} {...fadeUp(i * 0.07)} className="apple-card p-7">
+                <div className="text-[18px] font-bold text-[#1d1d1f] mb-2.5">{a.t}</div>
+                <div className="text-[14px] leading-relaxed text-[#6e6e73]">{a.d}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== 五段式主线 ==================== */}
+      <section className="py-20 px-4 bg-[#f5f5f7] border-y border-black/[.05]">
+        <div className="max-w-5xl mx-auto">
+          <div className="eyebrow mb-3 text-center">内容主线</div>
+          <h2 className="headline text-[28px] md:text-[36px] text-center mb-4">体验 → 认知 → 示范 → 盘点 → 承诺</h2>
+          <p className="text-center text-[#6e6e73] text-[15px] mb-12 max-w-2xl mx-auto">
+            能量不是被喊出来的，是被看见之后自然长出来的。
+          </p>
+          <div className="grid md:grid-cols-5 gap-3">
+            {storyline.map((s, i) => (
+              <motion.div key={s.n} {...fadeUp(i * 0.07)} className="apple-card p-5 text-center h-full">
+                <div className="text-[26px] font-black text-transparent bg-clip-text bg-gradient-to-br from-amber-500 to-rose-500 mb-2">{s.n}</div>
+                <div className="text-[17px] font-bold text-[#1d1d1f] mb-1.5">{s.t}</div>
+                <div className="text-[12px] text-[#86868b] mb-2">{s.q}</div>
+                <div className="text-[12.5px] leading-snug text-[#6e6e73]">{s.a}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== 完整议程 ==================== */}
+      <section id="agenda" className="py-20 px-4 scroll-mt-20">
+        <div className="max-w-4xl mx-auto">
+          <div className="eyebrow mb-3 text-center">完整议程</div>
+          <h2 className="headline text-[28px] md:text-[36px] text-center mb-14">两天，从「回家」到「出发」</h2>
+
+          {/* 12/19 回家夜 */}
+          <motion.div {...fadeUp()} className="mb-12">
+            <div className="flex items-baseline gap-3 mb-5">
+              <h3 className="text-[22px] font-bold text-[#1d1d1f]">12月19日（周六）· 回家夜</h3>
+              <span className="text-[13px] text-[#86868b]">外地伙伴一落地就有归属，为 20 日深度内容预热关系</span>
+            </div>
+            <div className="apple-card overflow-hidden">
+              {nightAgenda.map(([time, name, detail], i) => (
+                <div key={time} className={`grid md:grid-cols-[130px_170px_1fr] gap-x-4 gap-y-1 px-6 py-4 ${i % 2 === 0 ? 'bg-black/[.015]' : ''} ${i !== nightAgenda.length - 1 ? 'border-b border-black/[.04]' : ''}`}>
+                  <div className="text-[13px] font-semibold text-orange-600 tabular-nums">{time}</div>
+                  <div className="text-[14.5px] font-bold text-[#1d1d1f]">{name}</div>
+                  <div className="text-[13.5px] leading-relaxed text-[#6e6e73]">{detail}</div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* 12/20 正式大会 */}
+          <motion.div {...fadeUp()}>
+            <div className="flex items-baseline gap-3 mb-5">
+              <h3 className="text-[22px] font-bold text-[#1d1d1f]">12月20日（周日）· 正式大会</h3>
+              <span className="text-[13px] text-[#86868b]">9:00 - 17:00</span>
+            </div>
+            <div className="apple-card overflow-hidden">
+              {mainAgenda.map(([time, name, detail], i) => (
+                <div key={time} className={`grid md:grid-cols-[130px_1fr_1.6fr] gap-x-4 gap-y-1 px-6 py-4 ${i % 2 === 0 ? 'bg-black/[.015]' : ''} ${i !== mainAgenda.length - 1 ? 'border-b border-black/[.04]' : ''}`}>
+                  <div className="text-[13px] font-semibold text-orange-600 tabular-nums">{time}</div>
+                  <div className="text-[14.5px] font-bold text-[#1d1d1f]">{name}</div>
+                  <div className="text-[13.5px] leading-relaxed text-[#6e6e73]">{detail}</div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ==================== 六个记忆点 ==================== */}
+      <section className="py-20 px-4 bg-white border-y border-black/[.05]">
+        <div className="max-w-4xl mx-auto">
+          <div className="eyebrow mb-3 text-center">六个记忆点</div>
+          <h2 className="headline text-[28px] md:text-[36px] text-center mb-12">你会记住的瞬间</h2>
+          <div className="grid md:grid-cols-2 gap-4">
+            {memories.map((m, i) => (
+              <motion.div key={i} {...fadeUp(i * 0.06)} className="apple-card p-6 flex gap-4">
+                <div className="shrink-0 w-9 h-9 rounded-xl bg-gradient-to-br from-amber-500/15 to-rose-500/15 flex items-center justify-center text-[15px] font-black text-orange-600">{i + 1}</div>
+                <div className="text-[14px] leading-relaxed text-[#3a3a3c] pt-1.5">{m}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== 共创议题 ==================== */}
+      <section className="py-20 px-4">
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="eyebrow mb-3">开放空间 · 共创</div>
+          <h2 className="headline text-[26px] md:text-[32px] mb-10">四个议题，等你来认领</h2>
+          <div className="grid sm:grid-cols-2 gap-3 text-left">
+            {topics.map((t, i) => (
+              <motion.div key={i} {...fadeUp(i * 0.06)} className="apple-card p-5 flex items-center gap-3">
+                <span className="text-[18px] font-black text-transparent bg-clip-text bg-gradient-to-br from-amber-500 to-rose-500">{['①', '②', '③', '④'][i]}</span>
+                <span className="text-[14.5px] font-medium text-[#1d1d1f] leading-snug">{t}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== CTA ==================== */}
+      <section className="py-20 px-4 bg-white border-t border-black/[.05]">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="headline text-[26px] md:text-[34px] mb-4">报名通道即将开启</h2>
+          <p className="text-[#6e6e73] text-[15px] leading-relaxed mb-8">
+            到场限 50 人（报名 65 人封顶）。扫码订阅【小蛮腰AI拆书帮】知识库，
+            报名通道开启第一时间通知你；也可在知识库里随时问大会的任何问题。
+          </p>
+          <div className="flex flex-col items-center gap-3">
+            <img src="/images/ima-knowledge-qr.png" alt="【小蛮腰AI拆书帮】知识库二维码" className="w-[200px] rounded-2xl border border-black/[.06] shadow-[0_8px_28px_rgba(0,0,0,.10)]" />
+            <p className="text-[14px] text-[#6e6e73] font-semibold">微信或 ima 扫码，订阅知识库接收报名通知</p>
+            <Link to="/" className="text-[13px] text-[#0071e3] hover:underline mt-2">← 返回主页</Link>
+          </div>
+        </div>
+      </section>
+    </div>
+  )
+}
