@@ -48,7 +48,8 @@ function SupportCard({ t, i }) {
   )
 }
 
-const NEEDS_API = 'https://api.aibay.asia/needs/needs'
+// 需求征集经 FormSubmit 中转直发站长 QQ 邮箱（纯静态站无法自建后端，授权码不落前端）
+const NEEDS_API = 'https://formsubmit.co/ajax/1563502437@qq.com'
 
 function NeedsForm() {
   const [form, setForm] = useState({ software: '', scene: '', expect: '', contact: '', website: '' })
@@ -74,17 +75,22 @@ function NeedsForm() {
     try {
       const r = await fetch(NEEDS_API, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: '工作坊需求征集 · 小蛮腰拆AI',
+          _template: 'table',
+          _captcha: 'false',
+          ...form,
+        }),
       })
       const d = await r.json().catch(() => ({}))
-      if (r.ok && d.ok) {
+      if (r.ok && (d.success === 'true' || d.success === true)) {
         setState('ok')
-        window.alert(d.mailed ? '提交成功！需求已发送到站长邮箱，我们会尽快回复你。' : '提交成功！我们按需求排期后，会通过你留的联系方式告诉你。')
+        window.alert('提交成功！需求已发送到站长邮箱，我们会尽快回复你。')
         setForm({ software: '', scene: '', expect: '', contact: '', website: '' })
       } else {
         setState('error')
-        setMsg(d.error || '提交失败，请稍后再试，或直接加微信 ikoning365')
+        setMsg(d.message || d.error || '提交失败，请稍后再试，或直接加微信 ikoning365')
       }
     } catch {
       setState('error')

@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 
-const NEEDS_API = 'https://api.aibay.asia/needs/needs'
+// 留言经 FormSubmit 中转直发站长 QQ 邮箱（纯静态站无法自建后端，授权码不落前端）
+const NEEDS_API = 'https://formsubmit.co/ajax/1563502437@qq.com'
 
 function MessageBoard() {
   const [form, setForm] = useState({ name: '', msg: '', contact: '' })
@@ -22,8 +23,11 @@ function MessageBoard() {
     try {
       const r = await fetch(NEEDS_API, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
+          _subject: '网站留言板 · 小蛮腰拆AI',
+          _template: 'table',
+          _captcha: 'false',
           software: `【留言板】${form.name.trim() || '匿名站友'}`,
           scene: '关于页留言板',
           expect: form.msg.trim(),
@@ -32,17 +36,17 @@ function MessageBoard() {
         }),
       })
       const d = await r.json().catch(() => ({}))
-      if (r.ok && d.ok) {
+      if (r.ok && (d.success === 'true' || d.success === true)) {
         setState('ok')
-        setTip('留言已送达杨教练邮箱，感谢！')
+        setTip('留言已送达站长邮箱，感谢！')
         setForm({ name: '', msg: '', contact: '' })
       } else {
         setState('error')
-        setTip(d.error || '提交失败，请稍后再试')
+        setTip(d.message || d.error || '提交失败，请稍后再试')
       }
     } catch {
       setState('error')
-      setTip('网络异常——也可以直接加微信 ikoning365')
+      setTip('网络异常——也可以直接发邮件到 1563502437@qq.com')
     }
   }
 
@@ -52,7 +56,7 @@ function MessageBoard() {
         <input value={form.name} onChange={set('name')} maxLength={20} className="rounded-xl bg-[#f5f5f7] px-3.5 py-2.5 text-[13px] text-[#1d1d1f] outline-none focus:ring-2 focus:ring-neon-purple/30" placeholder="怎么称呼你？（可不填）" />
         <input value={form.contact} onChange={set('contact')} maxLength={40} className="rounded-xl bg-[#f5f5f7] px-3.5 py-2.5 text-[13px] text-[#1d1d1f] outline-none focus:ring-2 focus:ring-neon-purple/30" placeholder="联系方式，想收到回复就留（可不填）" />
       </div>
-      <textarea value={form.msg} onChange={set('msg')} maxLength={500} rows={3} className="w-full rounded-xl bg-[#f5f5f7] px-3.5 py-2.5 text-[13px] text-[#1d1d1f] outline-none focus:ring-2 focus:ring-neon-purple/30 resize-none" placeholder="给杨教练和站友们说句话——建议、疑问、感想都行" />
+      <textarea value={form.msg} onChange={set('msg')} maxLength={500} rows={3} className="w-full rounded-xl bg-[#f5f5f7] px-3.5 py-2.5 text-[13px] text-[#1d1d1f] outline-none focus:ring-2 focus:ring-neon-purple/30 resize-none" placeholder="给站长和站友们说句话——建议、疑问、感想都行" />
       <div className="flex items-center gap-3 flex-wrap">
         <button
           type="submit"
@@ -93,7 +97,7 @@ export default function About() {
               { label: '所属分舵', value: '广州小蛮腰分舵' },
               { label: '拆书等级', value: '三级拆书家' },
               { label: '微信', value: 'ikoning365' },
-              { label: '邮箱', value: '554176937@qq.com' },
+              { label: '邮箱', value: '1563502437@qq.com' },
             ].map(info => (
               <div key={info.label} className="p-4 rounded-xl bg-dark-card-hover/50 border border-dark-border">
                 <div className="text-xs text-[#86868b] mb-1">{info.label}</div>
@@ -162,7 +166,7 @@ export default function About() {
                 ))}
               </div>
               <p className="text-xs text-[#86868b] mt-4">
-                本站拆经典栏目内容整理自拆书帮社区公开拆页（非官方），著作权归各位拆书家本人所有，仅作学习交流之用、不用于商业用途；个人信息已脱敏。如有异议请联系站长（微信 ikoning365 / 邮箱 554176937@qq.com），核实后即刻移除。
+                本站拆经典栏目内容整理自拆书帮社区公开拆页（非官方），著作权归各位拆书家本人所有，仅作学习交流之用、不用于商业用途；个人信息已脱敏。如有异议请联系站长（微信 ikoning365 / 邮箱 1563502437@qq.com），核实后即刻移除。
               </p>
             </div>
           </div>
