@@ -78,10 +78,10 @@ export default function Home() {
                   年末特别场 · 拆书帮 2026 广州场成长大会
                 </div>
                 <h2 className="headline text-[30px] md:text-[42px] mb-4">
-                  《把这一年，<span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500">拆了</span>》
+                  《一年耕耘，<span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500">一起丰收</span>》
                 </h2>
                 <p className="text-[15px] md:text-[17px] text-[#6e6e73] leading-relaxed max-w-2xl mx-auto mb-6">
-                  不用会拆书，会过日子就行——年末了，回来把这一年拆开看看。<br className="hidden md:block" />
+                  这一年的耕耘都算数——年末了，我们聚在一起，交流、学习、彼此赋能。<br className="hidden md:block" />
                   12 月 20 日，距 2027 只剩 11 天：不是年会，是一年的收成到了可以清点的时候。
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[13.5px] font-semibold text-[#3a3a3c] mb-7">

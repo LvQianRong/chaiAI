@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
-// 拆书帮 2026 广州场 · 成长大会《把这一年，拆了》
+// 拆书帮 2026 广州场 · 成长大会《一年耕耘，一起丰收》
 // 配色：墨黑 + 暖橙 + 一点木棉红（避免大红大金年会感；不点燃，接住）
 const CONF_DATE = new Date('2026-12-19T00:00:00+08:00')
 
@@ -38,7 +38,7 @@ const nightAgenda = [
   ['15:00-18:00', '报到接待', '发「广州生存包」，领胸卡与「同频卡」'],
   ['18:30-18:50', '回家签到', '在「回家墙」上找到自己第一次参加拆书帮活动的照片，贴一颗星'],
   ['18:50-19:10', '一人一物', '带一件代表「今年成长」的小物，30 秒讲给陌生人'],
-  ['19:10-19:55', '闪电演讲', '6 人 × 5 分钟「我今年拆掉的一个旧我」（新人、回归者优先）'],
+  ['19:10-19:55', '闪电演讲', '6 人 × 5 分钟「我今年收获的一个新我」（新人、回归者优先）'],
   ['19:55-20:40', '分舵结对圆桌', '外地 × 本地 1:1 结对，聊「你明天最想解决的一个问题」'],
   ['20:40-20:55', '明日剧透', '讲清明天有哪三个「绝对不能错过的瞬间」'],
   ['20:55-21:00', '早睡约定', '合影 + 明日集合确认'],
@@ -55,7 +55,7 @@ const mainAgenda = [
   ['11:40-12:05', '【盘点】还没熟的果子', '从签到箱抽 3-5 件「还在长的事」，一起拆出条能结果的路'],
   ['12:05-13:20', '午餐 + 自由连接', '发「拼桌地图」按兴趣分组；本地伙伴带外地吃广州味道'],
   ['13:20-13:50', '能量唤醒', '身体动起来 + 上午「我看见了…」反馈 + 充电站开放说明'],
-  ['13:50-15:10', '【平行工作坊 3 选 1】', '①年度盘点：把 2026 拆成礼物 ②拆书实战：一段文字到一场课 ③拆书 × 副业/个人品牌'],
+  ['13:50-15:10', '【平行工作坊 3 选 1】', '①年度盘点：把 2026 收进粮仓 ②拆书实战：一段文字到一场课 ③拆书 × 副业/个人品牌'],
   ['15:10-15:25', '茶歇', '—'],
   ['15:25-16:15', '开放空间/世界咖啡 · 共创', '4 个议题，产出建议并现场认领负责人'],
   ['16:15-16:45', '颁奖：表彰坚持与回归', '年度坚持奖 / 年度回归奖 / 年度托举奖 / 幕后奖 / 最长路途 / 最佳新人'],
@@ -89,10 +89,10 @@ export default function GrowthConf() {
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <div className="eyebrow mb-4">拆书帮 2026 广州场 · 成长大会</div>
             <h1 className="headline text-[40px] md:text-[58px] mb-5">
-              《把这一年，<span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500">拆了</span>》
+              《一年耕耘，<span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500">一起丰收</span>》
             </h1>
             <p className="text-[17px] md:text-[19px] leading-relaxed text-[#6e6e73] max-w-2xl mx-auto mb-4">
-              不用会拆书，会过日子就行——年末了，回来把这一年拆开看看。
+              这一年，你读过的书、带过的场、熬过和发光的日子，都算数——年末了，我们聚在一起，交流、学习、彼此赋能。
             </p>
             <p className="text-[14px] text-[#86868b] mb-8">
               12 月 20 日，距 2027 只剩 11 天。这不是年会，是一年的收成到了可以清点的时候。
@@ -126,14 +126,15 @@ export default function GrowthConf() {
         </div>
       </section>
 
-      {/* ==================== 为什么叫「拆」 ==================== */}
+      {/* ==================== 为什么叫「丰收」 ==================== */}
       <section className="py-20 px-4 bg-white border-y border-black/[.05]">
         <div className="max-w-3xl mx-auto text-center">
           <div className="eyebrow mb-3">主题由来</div>
-          <h2 className="headline text-[28px] md:text-[36px] mb-6">这个「拆」，是拆礼物的拆</h2>
+          <h2 className="headline text-[28px] md:text-[36px] mb-6">这一年，果实比想象中多</h2>
           <p className="text-[15px] md:text-[16px] leading-[1.9] text-[#6e6e73] text-left md:text-center">
-            一个「拆」字，同时接住两件事：<b className="text-[#1d1d1f]">拆书</b>（方法论）和<b className="text-[#1d1d1f]">拆解这一年</b>（年末场景）。
-            这不是生硬嫁接，而是天然重合——拆书法的本质就是「把经验拆开、找到假设、换一个新行动」，而年末正是所有人都在做这件事的时候。
+            拆书帮的一年，是耕耘的一年：每一次共读、每一次过级、每一场带场，都是春天播下的种子。
+            到了年末，它们悄悄结成了果子——也许是一项新技能、一群同频的人、一个更稳的自己。
+            <b className="text-[#1d1d1f]">丰收不是一个人抱着果子，是把各自的果子摆到同一张桌子上</b>：交流让果子交换，学习让种子更新，赋能让彼此明年长得更旺。
           </p>
           <p className="mt-5 text-[15px] md:text-[16px] leading-[1.9] text-[#6e6e73] text-left md:text-center">
             年末不是「熬到头了」，是<b className="text-[#1d1d1f]">一年的收成到了可以清点的时候</b>。
@@ -272,3 +273,4 @@ export default function GrowthConf() {
     </div>
   )
 }
+
