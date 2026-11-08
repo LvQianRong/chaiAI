@@ -72,7 +72,7 @@ const ALL_MODES = { ...MODES, start: DEFAULT_MODE }
 
 const CONTACT_URL = 'https://www.chaishubang.com/'
 const OWNER_MAIL = '1563502437@qq.com'
-const OWNER_WX = 'ikoning365'
+const OWNER_WX = '13261578643'
 // 牵线卡经 FormSubmit 中转直发站长 QQ 邮箱（纯静态站无法自建后端，授权码不落前端）
 const NEEDS_API = 'https://formsubmit.co/ajax/1563502437@qq.com'
 

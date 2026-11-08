@@ -85,7 +85,7 @@ export default function About() {
           {/* Avatar and name */}
           <div className="text-center mb-12">
             <img src="/images/loong-logo.svg" alt="玄龙 logo" className="w-24 h-auto mx-auto mb-4" />
-            <h1 className="text-3xl md:text-4xl font-black text-[#1d1d1f] mb-2">杨辉</h1>
+            <h1 className="text-3xl md:text-4xl font-black text-[#1d1d1f] mb-2">吕芊蓉</h1>
             <p className="text-neon-purple font-medium">心光成长中心 · 企业 AI 落地教练 · 拆书帮三级拆书家</p>
           </div>
 
@@ -96,7 +96,7 @@ export default function About() {
               { label: '所在地', value: '广州越秀区雅苑·培正 5 号楼（工作坊地址）' },
               { label: '所属分舵', value: '广州小蛮腰分舵' },
               { label: '拆书等级', value: '三级拆书家' },
-              { label: '微信', value: 'ikoning365' },
+              { label: '微信', value: '13261578643' },
               { label: '邮箱', value: '1563502437@qq.com' },
             ].map(info => (
               <div key={info.label} className="p-4 rounded-xl bg-dark-card-hover/50 border border-dark-border">
@@ -166,7 +166,7 @@ export default function About() {
                 ))}
               </div>
               <p className="text-xs text-[#86868b] mt-4">
-                本站拆经典栏目内容整理自拆书帮社区公开拆页（非官方），著作权归各位拆书家本人所有，仅作学习交流之用、不用于商业用途；个人信息已脱敏。如有异议请联系站长（微信 ikoning365 / 邮箱 1563502437@qq.com），核实后即刻移除。
+                本站拆经典栏目内容整理自拆书帮社区公开拆页（非官方），著作权归各位拆书家本人所有，仅作学习交流之用、不用于商业用途；个人信息已脱敏。如有异议请联系站长（微信 13261578643 / 邮箱 1563502437@qq.com），核实后即刻移除。
               </p>
             </div>
           </div>
@@ -224,7 +224,7 @@ export default function About() {
             <span
               className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-neon-purple to-neon-blue text-white font-medium text-sm"
             >
-              微信联系 · ikoning365
+              微信联系 · 13261578643
             </span>
           </div>
         </motion.div>
