@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import skills from '../data/skills'
+import { assetUrl } from '../lib/hotData'
 
 // ===== 合作模式（与构建脚本 /tmp/octopus/csb/build_buddy.py 的 MODES 同源，改文案两边同步）=====
 const MODES = {
@@ -238,7 +239,7 @@ function PersonCard({ p, highlight = false, onBroker, onFind }) {
             <div className="flex items-center justify-between gap-2 flex-wrap">
               <span className="text-xs font-black">🤝 {m.full}</span>
               {m.href && (
-                <a href={m.href} className="text-[10px] font-bold underline underline-offset-2 opacity-80 hover:opacity-100" target={m.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer">
+                <a href={assetUrl(m.href)} className="text-[10px] font-bold underline underline-offset-2 opacity-80 hover:opacity-100" target={m.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer">
                   {m.cta} →
                 </a>
               )}
@@ -426,7 +427,7 @@ export default function Chaibuddy() {
   }
 
   useEffect(() => {
-    fetch('/chaibuddy/people.json')
+    fetch(`${import.meta.env.BASE_URL}chaibuddy/people.json`)
       .then(r => (r.ok ? r.json() : Promise.reject(new Error('http ' + r.status))))
       .then(setData)
       .catch(() => setLoadErr(true))
@@ -586,7 +587,7 @@ export default function Chaibuddy() {
                 <div className="flex flex-wrap gap-1">
                   {m.tags.map(t => <span key={t} className="px-1.5 py-0.5 rounded text-[10px] bg-black/[.05] text-[#48484a]">{t}</span>)}
                 </div>
-                <a href={m.href} target={m.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer" className="text-[11px] font-black underline underline-offset-2 opacity-80 hover:opacity-100">{m.cta} →</a>
+                <a href={assetUrl(m.href)} target={m.href.startsWith('http') ? '_blank' : undefined} rel="noopener noreferrer" className="text-[11px] font-black underline underline-offset-2 opacity-80 hover:opacity-100">{m.cta} →</a>
               </div>
             </motion.div>
           ))}
@@ -693,7 +694,7 @@ export default function Chaibuddy() {
                     {p.links.map(l => (
                       <a
                         key={l.href}
-                        href={l.href}
+                        href={assetUrl(l.href)}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-medium transition-all ${
@@ -761,7 +762,7 @@ export default function Chaibuddy() {
                     {group.items.map((item, i) => (
                       <motion.a
                         key={`${item.slug}-${i}`}
-                        href={`/images/skills/${encodeURIComponent(item.slug)}.html`}
+                        href={assetUrl(`/images/skills/${encodeURIComponent(item.slug)}.html`)}
                         target="_blank"
                         rel="noopener noreferrer"
                         initial={{ opacity: 0, y: 10 }}

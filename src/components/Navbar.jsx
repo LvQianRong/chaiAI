@@ -6,7 +6,7 @@ const navLinks = [
   { path: '/growth-conference', label: '成长大会', hot: true },
   { path: '/learning-path', label: '拆成长' },
   { path: '/hot', label: '拆经典' },
-  { path: '/chailive/', label: '拆指南', external: true },
+  { path: 'https://www.aibay.asia/chailive/', label: '拆指南', external: true },
   { path: '/chaibuddy', label: '拆搭子' },
   { path: '/workshops', label: '拆软件' },
   { path: '/skills', label: '拆技能' },
@@ -131,4 +131,5 @@ export default function Navbar() {
     </nav>
   )
 }
+
 
