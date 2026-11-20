@@ -82,7 +82,7 @@ export default function Home() {
                 </h2>
                 <p className="text-[15px] md:text-[17px] text-[#6e6e73] leading-relaxed max-w-2xl mx-auto mb-6">
                   怎么把书拆得更好、把自己长得更强——年会向上看方向，成长大会向内看进深。<br className="hidden md:block" />
-                  12 月 12 日，广州大湾区，从深耕到共启的完整一天。
+                  12 月 12 日，广州大湾区，一年深耕，一起共启新程。
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[13.5px] font-semibold text-[#3a3a3c] mb-7">
                   <span>📅 12月12日（周六）9:00—17:00</span>
@@ -90,7 +90,7 @@ export default function Home() {
                   <span>🎟 50—100 位拆书家与学习爱好者</span>
                 </div>
                 <span className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 text-white text-[15px] font-bold shadow-[0_8px_24px_rgba(249,115,22,.35)] group-hover:scale-[1.03] transition-transform">
-                  查看大会详情与议程 →
+                  抢先看大会预告 →
                 </span>
               </div>
             </Link>
@@ -315,5 +315,6 @@ export default function Home() {
     </div>
   )
 }
+
 
 
