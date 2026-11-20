@@ -61,7 +61,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ==================== 成长大会 · 年末特别场 ==================== */}
+      {/* ==================== 成长大会 · 首要位置 ==================== */}
       <section className="pb-20 px-4">
         <div className="max-w-5xl mx-auto">
           <motion.div
@@ -75,19 +75,19 @@ export default function Home() {
               <div className="relative px-7 py-10 md:px-12 md:py-12 text-center">
                 <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/70 border border-orange-500/25 text-[12px] font-bold text-orange-600 mb-5">
                   <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse" />
-                  年末特别场 · 拆书帮 2026 广州场成长大会
+                  拆书家成长大会（广州站）· 三分舵联合主办
                 </div>
                 <h2 className="headline text-[30px] md:text-[42px] mb-4">
-                  《一年耕耘，<span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500">一起丰收</span>》
+                  一年深耕，<span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500">共启新程</span>
                 </h2>
                 <p className="text-[15px] md:text-[17px] text-[#6e6e73] leading-relaxed max-w-2xl mx-auto mb-6">
-                  这一年的耕耘都算数——年末了，我们聚在一起，交流、学习、彼此赋能。<br className="hidden md:block" />
-                  12 月 20 日，距 2027 只剩 11 天：不是年会，是一年的收成到了可以清点的时候。
+                  怎么把书拆得更好、把自己长得更强——年会向上看方向，成长大会向内看进深。<br className="hidden md:block" />
+                  12 月 12 日，广州大湾区，从深耕到共启的完整一天。
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[13.5px] font-semibold text-[#3a3a3c] mb-7">
-                  <span>📅 12月19日 回家夜 · 12月20日 正式大会</span>
-                  <span>📍 广州 · 地铁沿线</span>
-                  <span>🎟 到场限 50 人</span>
+                  <span>📅 12月12日（周六）9:00—17:00</span>
+                  <span>📍 广州天河 · 天慧路 10、12、14 号</span>
+                  <span>🎟 50—100 位拆书家与学习爱好者</span>
                 </div>
                 <span className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 text-white text-[15px] font-bold shadow-[0_8px_24px_rgba(249,115,22,.35)] group-hover:scale-[1.03] transition-transform">
                   查看大会详情与议程 →
@@ -315,4 +315,5 @@ export default function Home() {
     </div>
   )
 }
+
 
